@@ -15,6 +15,8 @@ public class MainApp {
 					addNewUser();
 					break;
 				case 2:
+					User dummy = new User(1, "Prova", "Dummy", 30);
+					modifyUser(dummy);
 					break;
 				case 3:
 					break;
@@ -78,6 +80,18 @@ public class MainApp {
 			}
 		} while(readingError);
 		return new User(id, name, surname, age);
+	}
+
+	public static void modifyUser(User user){
+		System.out.println("===== Current user data =====");
+		System.out.println(user.toString());
+		System.out.println("===== Insert new data =====");
+		User newOne = addNewUser();
+		user.setId(newOne.getId());
+		user.setName(newOne.getName());
+		user.setSurname(newOne.getSurname());
+		user.setAge(newOne.getAge());
+		System.out.println("Changes done!");
 	}
 
 }
