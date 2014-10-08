@@ -10,7 +10,17 @@ public class MainApp {
 
 		int option = showMenu();
 		while(option != 0){
-
+			switch(option){
+				case 1:
+					addNewUser();
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 0:
+					break;
+			}
 			option = showMenu();
 		}
 
@@ -41,4 +51,33 @@ public class MainApp {
 		}		
 		return result;
 	}
+
+	/**
+	 * Asks user for User properties and creates a new one
+	 * @return
+	 */
+	public static User addNewUser() {
+		int id, age; id = age = -1;
+		String name, surname; name = surname = "";
+		boolean readingError;
+		do {
+			try{
+				BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+				System.out.println("id:");
+				id = Integer.parseInt(buffer.readLine());
+				System.out.println("Name:");
+				name = buffer.readLine();
+				System.out.println("Surname:");
+				surname = buffer.readLine();
+				System.out.println("age:");
+				age = Integer.parseInt(buffer.readLine());
+				readingError = false;
+			}catch(Exception e){
+				System.out.println("Incorrect value!!");
+				readingError = true;
+			}
+		} while(readingError);
+		return new User(id, name, surname, age);
+	}
+
 }
