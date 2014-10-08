@@ -2,21 +2,35 @@ import java.io.*;
 
 public class MainApp {
 
+	private static User arrayUsers[] = new User[10];
+	private static int numUsers = 0;
 	/**
 	 * Main function
 	 * @param args
 	 */
 	public static void main(String[] args){
-
 		int option = showMenu();
 		while(option != 0){
 			switch(option){
 				case 1:
-					addNewUser();
+					User u = addNewUser();
+					arrayUsers[numUsers] = u;					
+					numUsers++;
 					break;
 				case 2:
-					User dummy = new User(1, "Prova", "Dummy", 30);
-					modifyUser(dummy);
+					boolean readingError;
+					do{ 
+						System.out.println("Which user? (insert array index)");
+						BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+						try{
+							int index = Integer.parseInt(buffer.readLine());
+							modifyUser(arrayUsers[index]);
+							readingError = false;
+						}catch(Exception e){
+							System.out.println("There is no user in the given index");
+							readingError = true;
+						}
+					}while(readingError);
 					break;
 				case 3:
 					break;
@@ -41,7 +55,7 @@ public class MainApp {
 			System.out.println("==========");
 			System.out.println("1. - Add new User");
 			System.out.println("2. - Modify existing User");
-			System.out.println("3. - Delete User");
+			System.out.println("3. - Delete User (TODO)");
 			System.out.println("0. - Exit");
 			try{
 				String option = buffer.readLine();	
