@@ -125,9 +125,8 @@ public class MainApp {
 	
 		/**
 	 * delete Users
-	 * @return
 	 */
-	public static void deleteUsers()  {
+	public static void deleteUsers(){
 
 				for(int i=0; i< arrayUsers.length;i++)
 				{
