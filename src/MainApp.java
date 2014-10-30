@@ -37,6 +37,7 @@ public class MainApp {
 					}while(readingError);
 					break;
 				case 3:
+					deleteUsers();
 					break;
 				case 4:
 					Courses courses = addNewCourses();
@@ -122,7 +123,18 @@ public class MainApp {
 		System.out.println("Changes done!");
 	} 
 	
-	
+		/**
+	 * delete Users
+	 * @return
+	 */
+	public static void deleteUsers()  {
+
+				for(int i=0; i< arrayUsers.length;i++)
+				{
+					arrayUsers[i] = null;
+				}
+
+	}
 	/**
 	 * Create Courses
 	 * @return
